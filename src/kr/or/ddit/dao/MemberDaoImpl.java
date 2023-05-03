@@ -20,20 +20,18 @@ public class MemberDaoImpl implements IMemberDao {
 	}
 	
 	@Override
-	public int memLogin(MemberVO vo) {
-		System.out.println(vo.getMem_id());
-		int cnt=0;
+	public MemberVO memLogin(MemberVO vo) {
+
 		SqlSession session = null;
-		
+		MemberVO loginvo = null;
 		try {
 			session = MybatisSqlSessionFactory.getSqlSession();
-			cnt = session.selectOne("member.memLogin", vo);
-			
+			loginvo = session.selectOne("member.memLogin", vo);
 		} finally {
 			session.close();
 		}
 		
-		return cnt;
+		return loginvo;
 	}
 
 	@Override
@@ -44,9 +42,11 @@ public class MemberDaoImpl implements IMemberDao {
 		
 		try {
 			session = MybatisSqlSessionFactory.getSqlSession();
-			cnt = session.insert("member.memberVO", vo);
+			cnt = session.insert("member.memSignUp", vo);
+			System.out.println(cnt);
 			
 		} finally {
+			session.commit();
 			session.close();
 		}
 		

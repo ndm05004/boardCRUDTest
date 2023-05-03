@@ -9,7 +9,7 @@ public class memberServiceImpl implements ImemberService {
 	private MemberDaoImpl dao;
 	
 	private memberServiceImpl() {
-		dao.getInstance();
+		dao = MemberDaoImpl.getInstance();
 	}
 	
 	public static ImemberService getInstance() {
@@ -19,7 +19,7 @@ public class memberServiceImpl implements ImemberService {
 	
 	
 	@Override
-	public int memLogin(MemberVO vo) {
+	public MemberVO memLogin(MemberVO vo) {
 		return dao.memLogin(vo);
 	}
 

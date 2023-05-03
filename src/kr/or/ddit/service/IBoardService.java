@@ -11,12 +11,12 @@ public interface IBoardService {
 	int boardInsert(BoardVO vo);
 	
 	
-	BoardVO selectBoard(int bo_no);
+	BoardVO selectBoard(String bo_no);
 	
 	
 	int updateBoard(BoardVO vo);
 	
 	
-	int deleteBoard(int bo_no);
+	int deleteBoard(String bo_no);
 
 }

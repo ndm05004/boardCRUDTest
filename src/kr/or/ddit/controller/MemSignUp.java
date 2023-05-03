@@ -3,25 +3,25 @@ package kr.or.ddit.controller;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import kr.or.ddit.dao.MemberDaoImpl;
 import kr.or.ddit.service.ImemberService;
 import kr.or.ddit.service.memberServiceImpl;
 import kr.or.ddit.vo.MemberVO;
 
-
-@WebServlet("/login.do")
-public class Login extends HttpServlet {
+/**
+ * Servlet implementation class memSignUp
+ */
+@WebServlet("/memSignUp.do")
+public class MemSignUp extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/views/board/boardLogin.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/views/board/memSignUp.jsp").forward(request, response);
 	}
+
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -30,22 +30,21 @@ public class Login extends HttpServlet {
 		
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
-
-		MemberVO loginVo = new MemberVO();
-		loginVo.setMem_id(id);
-		loginVo.setMem_pw(pw);
-				
-		ImemberService service = memberServiceImpl.getInstance();
+		String name = request.getParameter("name");
 		
-		MemberVO vo = service.memLogin(loginVo);
+		MemberVO signUpVo = new MemberVO();
+		signUpVo.setMem_id(id);
+		signUpVo.setMem_pw(pw);
+		signUpVo.setMem_name(name);
 				
-		if(vo != null) {
-			HttpSession session = request.getSession();
-			session.setAttribute("loginVo", vo);
-			response.sendRedirect("/boardList.do");
-			
+		ImemberService service = memberServiceImpl.getInstance(); 
+		
+		int check = service.memSignUp(signUpVo);
+		
+		if(check == 1) {
+			response.sendRedirect("/login.do");
 		}else {
-			response.sendRedirect("/login.do?flag=1");
+			response.sendRedirect("/memSignUp.do");
 		}
 		
 	}

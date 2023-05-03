@@ -48,6 +48,7 @@ public class BoardDaoImpl implements IBoardDao {
 			cnt = session.insert("board.boardInsert", vo);
 			
 		} finally {
+			session.commit();
 			session.close();
 		}
 		
@@ -55,7 +56,7 @@ public class BoardDaoImpl implements IBoardDao {
 	}
 
 	@Override
-	public BoardVO selectBoard(int bo_no) {
+	public BoardVO selectBoard(String bo_no) {
 		
 		BoardVO boardvo = null;
 		
@@ -82,6 +83,7 @@ public class BoardDaoImpl implements IBoardDao {
 			cnt = session.update("board.updateBoard", vo);
 			
 		} finally {
+			session.commit();
 			session.close();
 		}
 		
@@ -89,7 +91,7 @@ public class BoardDaoImpl implements IBoardDao {
 	}
 
 	@Override
-	public int deleteBoard(int bo_no) {
+	public int deleteBoard(String bo_no) {
 		
 		SqlSession session = null;
 		int cnt=0;
@@ -98,6 +100,7 @@ public class BoardDaoImpl implements IBoardDao {
 			cnt = session.delete("board.deleteBoard", bo_no);
 			
 		} finally {
+			session.commit();
 			session.close();
 		}
 		

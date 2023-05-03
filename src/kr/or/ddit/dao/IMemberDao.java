@@ -4,7 +4,7 @@ import kr.or.ddit.vo.MemberVO;
 
 public interface IMemberDao {
 
-	int memLogin(MemberVO vo);
+	MemberVO memLogin(MemberVO vo);
 	
 	int memSignUp(MemberVO vo);
 	

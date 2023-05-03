@@ -14,7 +14,7 @@
 	values(seq_board.nextval, #{bo_title}, #{bo_content}, #{bo_writer}, sysdate, 1)
 </insert>
 
-<select id="selectBoard" parameterType="int" resultType="boardVO">
+<select id="selectBoard" parameterType="String" resultType="boardVO">
 	select * from board where bo_no=#{bo_no}
 </select>
 
@@ -23,7 +23,7 @@
 	where bo_no=#{bo_no}
 </update>
 
-<delete id="deleteBoard" parameterType="int">
+<delete id="deleteBoard" parameterType="String">
 	delete board where bo_no=#{bo_no}
 </delete>
 

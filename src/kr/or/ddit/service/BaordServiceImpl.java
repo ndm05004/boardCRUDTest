@@ -31,7 +31,7 @@ public class BaordServiceImpl implements IBoardService {
 	}
 
 	@Override
-	public BoardVO selectBoard(int bo_no) {
+	public BoardVO selectBoard(String bo_no) {
 		return dao.selectBoard(bo_no);
 	}
 
@@ -41,7 +41,7 @@ public class BaordServiceImpl implements IBoardService {
 	}
 
 	@Override
-	public int deleteBoard(int bo_no) {
+	public int deleteBoard(String bo_no) {
 		return dao.deleteBoard(bo_no);
 	}
 
