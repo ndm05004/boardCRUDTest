@@ -6,11 +6,8 @@
 <html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
-<% 
-
-MemberVO mem = (MemberVO)session.getAttribute("loginVo");
+<%
 BoardVO board = (BoardVO)request.getAttribute("select");
-
 %>
 
 <head>
@@ -18,12 +15,13 @@ BoardVO board = (BoardVO)request.getAttribute("select");
 <title>Insert title here</title>
 </head>
 <body>
-<h1><%=mem.getMem_id() %></h1>
+<h2>게시판 상세정보</h2>
 
 	<table border='1'>
 		<tr>
 			<th>번호</th>
 			<th>제목</th>
+			<th>내용</th>
 			<th>작성자</th>
 			<th>작성일</th>
 			<th>조회수</th>
@@ -31,13 +29,17 @@ BoardVO board = (BoardVO)request.getAttribute("select");
 		<tr>
 			<td><%=board.getBo_no() %></td>
 			<td><%=board.getBo_title()%></td>
+			<td><%=board.getBo_content()%></td>
 			<td><%=board.getBo_writer() %></td>
 			<td><%=board.getBo_regdate() %></td>
 			<td><%=board.getBo_hit() %></td>
 		</tr>
 	</table>
 
-<% if(mem.getMem_id().equals(board.getBo_writer())){
+<% 
+MemberVO mem = (MemberVO)session.getAttribute("loginVo");
+
+if(mem.getMem_id().equals(board.getBo_writer())){
 	
 %>
 

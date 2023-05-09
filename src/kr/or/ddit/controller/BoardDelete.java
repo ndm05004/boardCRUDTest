@@ -17,22 +17,19 @@ public class BoardDelete extends HttpServlet {
        
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		String bo_no = request.getParameter("bo_no");
 		
 		IBoardService service = BaordServiceImpl.getInstance();
 		
 		service.deleteBoard(bo_no);
 		
-		request.getRequestDispatcher("/WEB-INF/views/board/boardList.jsp").forward(request, response);
-		
+		response.sendRedirect("/boardList.do");
 		
 	}
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
 	}
 
 }

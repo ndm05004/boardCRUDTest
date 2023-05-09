@@ -107,6 +107,22 @@ public class BoardDaoImpl implements IBoardDao {
 		return cnt;
 	}
 	
+	@Override
+	public int updateHit(String bo_no) {
+		SqlSession session = null;
+		int cnt=0;
+		try {
+			session = MybatisSqlSessionFactory.getSqlSession();
+			cnt = session.update("board.updateHit", bo_no);
+			
+		} finally {
+			session.commit();
+			session.close();
+		}
+		
+		return cnt;
+	}
+	
 	
 
 }

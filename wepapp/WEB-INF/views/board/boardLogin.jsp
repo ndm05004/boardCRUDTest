@@ -33,6 +33,10 @@ $(function(){
 		alert("등록되지 않은 회원입니다.");
 	}
 	
+	if("${flag}" == "2"){
+		alert("회원가입 성공입니다.");
+	}
+	
 	loginBtn = $("#loginBtn");
 	sighUpBtn =$("#sighUpBtn");
 	

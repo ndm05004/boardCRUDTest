@@ -19,5 +19,7 @@ public interface IBoardDao {
 	
 	
 	int deleteBoard(String bo_no);
+
+	int updateHit(String bo_no);
 	
 }

@@ -27,4 +27,15 @@
 	delete board where bo_no=#{bo_no}
 </delete>
 
+<update id="updateHit" parameterType="String">
+	update board set bo_hit = bo_hit+1 where bo_no=#{bo_no}
+</update>
+
+
+<select id="totalCount" parameterType="map" resultType="int">
+	select count(*) from board
+</select>
+
+
+
 </mapper>

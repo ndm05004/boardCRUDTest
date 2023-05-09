@@ -11,7 +11,7 @@
 <body>
 <%=mem.getMem_id() %>
 
-<form id="boardInsert" name="login" action="<%=request.getContextPath()%>/boardInsert.do" method="post">
+<form id="boardInsert" name="login" action="/boardinsert.do?id=<%=mem.getMem_id()%>" method="post">
 제목: <input type="text" id="title" name="title"><br>
 내용: <input type="text" id="content" name="content"><br>
 <input type="submit" value="등록" id="insertBtn">

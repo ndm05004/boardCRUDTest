@@ -30,7 +30,7 @@ public class Login extends HttpServlet {
 		
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
-
+		
 		MemberVO loginVo = new MemberVO();
 		loginVo.setMem_id(id);
 		loginVo.setMem_pw(pw);
@@ -42,7 +42,7 @@ public class Login extends HttpServlet {
 		if(vo != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("loginVo", vo);
-			response.sendRedirect("/boardList.do");
+			response.sendRedirect("/boardList.do?page=1");
 			
 		}else {
 			response.sendRedirect("/login.do?flag=1");

@@ -1,8 +1,11 @@
+<%@page import="org.apache.log4j.pattern.IntegerPatternConverter"%>
 <%@page import="kr.or.ddit.vo.BoardVO"%>
 <%@page import="java.util.List"%>
 <%@page import="kr.or.ddit.vo.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html>
 <% MemberVO mem = (MemberVO)session.getAttribute("loginVo"); %>
@@ -44,6 +47,9 @@
 			<%
 		}
 	%>
+
+	
+	
 </table>
 <input type="button" value="등록" onclick="location.href='<%=request.getContextPath()%>/boardinsert.do'">	
 

@@ -32,6 +32,7 @@ public class BaordServiceImpl implements IBoardService {
 
 	@Override
 	public BoardVO selectBoard(String bo_no) {
+		dao.updateHit(bo_no);
 		return dao.selectBoard(bo_no);
 	}
 
@@ -45,7 +46,12 @@ public class BaordServiceImpl implements IBoardService {
 		return dao.deleteBoard(bo_no);
 	}
 
+	@Override
+	public int updateHit(String bo_no) {
+		return dao.updateHit(bo_no);
+	}
 	
+
 	
 	
 }

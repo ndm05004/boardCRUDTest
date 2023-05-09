@@ -42,9 +42,9 @@ public class MemSignUp extends HttpServlet {
 		int check = service.memSignUp(signUpVo);
 		
 		if(check == 1) {
-			response.sendRedirect("/login.do");
+			response.sendRedirect("/login.do?flag=2");
 		}else {
-			response.sendRedirect("/memSignUp.do");
+			response.sendRedirect("/memSignUp.do?flag=1");
 		}
 		
 	}

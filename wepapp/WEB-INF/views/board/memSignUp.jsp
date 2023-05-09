@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%
+	String flag = request.getParameter("flag");
+%>
+<c:set value="<%=flag%>" var="flag"/>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,14 +15,15 @@
 
 </head>
 <body>
+
 <h2>회원가입</h2>
 <form id="signUpForm" name="signUp" action="<%=request.getContextPath()%>/memSignUp.do" method="post">
 아이디: <input type="text" id="id" name="id"><br>
 비밀번호: <input type="text" id="pw" name="pw"><br>
 이름: <input type="text" id="name" name="name"><br>
 <input type="button" value="등록" id="registrationBtn">
-<input type="button" value="뒤로" id="back" onclick="location.href='<%=request.getContextPath()%>/boardStart.do'">
-</form>s
+<input type="button" value="뒤로" id="back" onclick="location.href='<%=request.getContextPath()%>/login.do'">
+</form>
 
 </body>
 
@@ -46,9 +53,15 @@ $(function(){
 			alert("이름이 누락되었습니다!");
 			return false;
 		}
+		
 		signUpForm.submit();
 		
 	})
+	
+	if("${flag}" == "1"){
+		alert("서버 에러! 다시 시도해주세요!");
+	}
+	
 })
 
 
